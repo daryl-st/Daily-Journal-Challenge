@@ -42,6 +42,14 @@ app.post('/compose', (req, res) => {
     res.redirect('/');
 })
 
+app.get('/posts/:topic', (req, res) => {
+    posts.forEach((post) => {
+        if (post.title == req.params.topic) {
+            console.log("Match Found!");
+        }
+    })
+});
+
 
 
 app.listen(3000, function() {

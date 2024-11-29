@@ -4,7 +4,8 @@
 <p> <%= homeContent %> </p>
 
 <% postsData.forEach((posts) => { %>
-<% 	console.log(posts.title); %>
+	<h2> <%= posts.title %> </h2>
+	<p> <%= posts.content %> </p>
 <% }) %>
 
 <%- include("partials/footer") -%>
