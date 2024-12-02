@@ -5,7 +5,7 @@
 
 <% postsData.forEach((posts) => { %>
 	<h2> <%= posts.title %> </h2>
-	<p> <%= posts.content %> </p>
+	<p> <%= posts.content.substring(0, 100) + "..." %> <a href=<%= "/posts/" + lodash.kebabCase(posts.title) %> >read more</a> </p>
 <% }) %>
 
 <%- include("partials/footer") -%>
