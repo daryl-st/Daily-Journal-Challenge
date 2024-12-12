@@ -1,11 +1,60 @@
 <%- include("partials/header") -%>
 
-<h2>Home</h2>
-<p> <%= homeContent %> </p>
+<div class="container">
+	<div class="left-text">
+		<h1 class="tinos-bold">MOOD JOURNAL</h1>
+		<p>Your Daily Journal App</p>
+	</div>
+	<div class="main-panel">
+		<div class="mini-container">
+			<form class="myForm" action="/" method="post">
+				<p>How are u feeling?</p>
+				<div class="emoji-block">
+					<% const icons = ['sad-tear', 'tired', 'rolling-eyes', 'meh', 'smile', 'smile-wink'] %>
+					<% icons.forEach(icon => { %>
+						<i class="fa-solid fa-face-<%= icon %> fa-2xl" name="<%= icon %>" onclick="setIconName(this)"></i>
+					<% }); %>
 
-<% postsData.forEach((posts) => { %>
-	<h2> <%= posts.title %> </h2>
-	<p> <%= posts.content.substring(0, 100) + "..." %> <a href=<%= "/posts/" + lodash.kebabCase(posts.title) %> >read more</a> </p>
-<% }) %>
+					<input type="hidden" id="iconName" name="iconName" value="">
+				</div>
+				<p>What's affecting ur mood?</p>
+				<div class="choice-box">
+					<% const moods = ['Work', 'Exercise', 'Family', 'Hobbies', 'Health', 'Sleep', 'Relationships', 'Education', 'Finances', 'Food'] %>
+					<% moods.forEach(mood => { %>
+						<span name="<%= mood %>" onclick="setMoodName(this)"> <%= mood %> </span>
+					<% }); %>
+
+					<input type="hidden" id="moodName" name="moodName" value="">
+				</div>
+				<p>Let's write about it...</p>
+				<textarea name="postBody" id="textarea" placeholder="write something..."></textarea>
+				<button name="btn" class="post-btn" type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+			</form>
+		</div>
+	</div>
+</div>
+<hr>
+
+<script>
+	function setMoodName(element) {
+		const moodName = element.getAttribute("name");
+		document.getElementById("moodName").value = moodName;
+
+		const group = document.querySelectorAll(".choice-box span");
+		group.forEach(item => item.classList.remove("clicked"));
+
+		element.classList.add("clicked");
+	}
+
+	function setIconName(element) {
+		const iconName = element.getAttribute("name");
+		document.getElementById("iconName").value = iconName;
+
+		const group = document.querySelectorAll(".emoji-block i");
+		group.forEach(item => item.classList.remove("clicked"));
+
+		element.classList.add("clicked");
+	}
+</script>
 
 <%- include("partials/footer") -%>
