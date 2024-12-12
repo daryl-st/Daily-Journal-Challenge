@@ -1,6 +1,24 @@
 <%- include("partials/header") -%>
 
-<h2>Contact</h2>
-<p> <%= contactContent %> </p>
+<div class="info-container">
+	<div class="left-text" style="text-align: right;">
+		<h1 class="tinos-bold">Contact us</h1>
+		<p>Your Daily Journal</p>
+	</div>
+	<div class="form-container">
+		<!-- form elements with basic information -->
+		<form action="">
+			<fieldset>
+				<legend>Your information</legend>
+				<label for="fullName"><i class="fa-regular fa-user"></i> </label> 
+				<input type="text" id="fullName" placeholder="Name" required> <br>
+				<label for="email"><i class="fa-regular fa-envelope"></i> </label> 
+				<input type="email" id="email" placeholder="Email" required> <br>
+				<textarea name="textarea" class="textarea" placeholder="Enter message here..."></textarea>
+				<button type="submit" class="post-btn">Submit</button>
+			</fieldset>
+		</form>
+	</div>
+</div>
 
 <%- include("partials/footer") -%>

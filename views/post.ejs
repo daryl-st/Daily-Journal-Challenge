@@ -1,6 +1,20 @@
 <%- include("partials/header") -%>
 
-<h2> <%= postTitle %> </h2>
-<p> <%= postBody %> </p>
+<!-- if post array is not empty then show iterate over each with card class
+else construct "no posts so far" page -->
+
+<div class="cards">
+<% posts.forEach((post) => { %>
+	<div class="card">
+		<div class="post-body">
+			<p><%= post.content.substring(0, 100) %> <a href=<%= "/posts/" + lodash.kebabCase(posts.title) %> >...</a> </p>
+		</div> <hr>
+		<div class="post-title">
+			<span> <%= post.title %> </span>
+			<span> <i class="fa-solid fa-face-<%= post.emoji %>" style="color: #FFCC00;"></i> </span>
+		</div>
+	</div>
+<% }) %>
+</div>
 
 <%- include("partials/footer") -%>
